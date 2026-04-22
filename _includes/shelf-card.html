@@ -1,0 +1,14 @@
+{%- assign review = include.review -%}
+<a href="{{ review.url | relative_url }}" class="fl-shelf">
+  <div class="fl-img-ph">
+    {% if review.cover %}
+      <img src="{{ review.cover | relative_url }}" alt="{{ review.title | escape }}">
+    {% else %}
+      <span class="fl-img-note">{{ review.origin }}</span>
+    {% endif %}
+  </div>
+  <div class="fl-shelf-house">{{ review.house }}</div>
+  <div class="fl-shelf-name">{{ review.title }}</div>
+  <div class="fl-shelf-score">{{ review.score }}<span>/100</span></div>
+  <div class="fl-shelf-btn">Read the review →</div>
+</a>

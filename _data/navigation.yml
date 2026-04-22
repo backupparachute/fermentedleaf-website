@@ -1,0 +1,16 @@
+left:
+  - label: The Journal
+    url: /journal/
+  - label: Humidor
+    url: /humidor/
+  - label: Guides
+    url: /guides/
+
+right:
+  - label: Search
+    url: /search/
+  - label: Account
+    url: /account/
+  - label: Subscribe
+    url: /subscribe/
+    accent: true

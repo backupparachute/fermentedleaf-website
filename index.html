@@ -1,0 +1,153 @@
+---
+layout: home
+title: false
+---
+
+{%- assign featured = site.reviews | where: "featured", true | sort: "date" | reverse | first -%}
+{%- assign recent = site.reviews | where_exp: "r", "r.featured != true" | sort: "date" | reverse -%}
+{%- assign journal = site.journal | sort: "order" -%}
+{%- assign humidor = site.reviews | sort: "date" | reverse -%}
+
+<!-- Hero -->
+<section class="fl-hero">
+  <div class="fl-hero-text">
+    <div class="fl-eyebrow">{{ site.hero.eyebrow }}</div>
+    <h1>{{ site.hero.title_html }}</h1>
+    <p class="fl-hero-lede">{{ site.hero.tagline }} <span class="cont">{{ site.hero.tagline_cont }}</span></p>
+    <div class="fl-ctas">
+      <a href="{{ site.hero.primary_cta.url | relative_url }}" class="fl-btn fl-btn-primary">{{ site.hero.primary_cta.label }} <span class="arr">→</span></a>
+      <a href="{{ site.hero.ghost_cta.url | relative_url }}" class="fl-btn fl-btn-ghost">{{ site.hero.ghost_cta.label }}</a>
+    </div>
+
+    <div class="fl-hero-meta">
+      {% for stat in site.hero.stats %}
+        <div>
+          <div class="num">{{ stat.num }}</div>
+          <div class="lbl">{{ stat.label }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <aside class="fl-featured">
+    <span class="fl-featured-tag">Editor's Smoke</span>
+    <div class="fl-img-ph">
+      {% if featured.cover %}
+        <img src="{{ featured.cover | relative_url }}" alt="{{ featured.title | escape }}">
+      {% else %}
+        <span class="fl-img-note">{{ featured.image_note }}</span>
+      {% endif %}
+    </div>
+    <div class="fl-origin">{{ featured.origin }}</div>
+    <h3 class="fl-featured-title">{{ featured.title }}</h3>
+    <p class="fl-featured-excerpt">{{ featured.excerpt }}</p>
+    <div class="fl-featured-foot">
+      <div class="fl-score">
+        <span class="fl-score-num">{{ featured.score }}</span>
+        <span class="fl-score-den">/100</span>
+      </div>
+      <a href="{{ featured.url | relative_url }}" class="fl-read-link">Read the review →</a>
+    </div>
+  </aside>
+</section>
+
+<!-- Recent reviews -->
+<section class="fl-section">
+  <div class="fl-section-head">
+    <div>
+      <div class="fl-kicker">{{ site.reviews_section.kicker }}</div>
+      <h2>{{ site.reviews_section.title_html }}</h2>
+    </div>
+    <p class="fl-side">{{ site.reviews_section.side }}</p>
+  </div>
+
+  <div class="fl-reviews">
+    {% for review in recent limit: 3 %}
+      {% include review-card.html review=review %}
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Journal -->
+<section class="fl-section">
+  <div class="fl-journal-wrap">
+    <div>
+      <div class="fl-kicker">{{ site.journal_section.kicker }}</div>
+      <h2 class="fl-journal-head">{{ site.journal_section.title_html }}</h2>
+
+      <div class="fl-journal-list">
+        {% for article in journal limit: 5 %}
+          <a href="{{ article.url | relative_url }}" class="fl-journal-item">
+            <div class="num">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</div>
+            <div>
+              <h4>{{ article.title }}</h4>
+              <div class="mm">{{ article.kicker }} · {{ article.read_time }} min read</div>
+            </div>
+            <div class="arr">→</div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <aside>
+      <div class="fl-sidecard">
+        <div class="fl-kicker">Staff Favorites</div>
+        <h4>{{ site.data.picks.title }}</h4>
+        <ul class="fl-picks">
+          {% for pick in site.data.picks.items %}
+            <li>
+              <span class="rank">{{ pick.rank }}</span>
+              <span class="name">{{ pick.name }}</span>
+              <span class="yr">{{ pick.year }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="fl-sidecard">
+        <div class="fl-kicker">The Rating System</div>
+        <h4>How we score, in short.</h4>
+        <p>Cigars are rested, smoked at least twice, and assessed across construction, draw, combustion, flavor, and finish. A cigar earns a number, but the words matter more.</p>
+        <a href="{{ '/methodology/' | relative_url }}" class="fl-read-link">Read the methodology →</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- Pullquote -->
+<section class="fl-pull">
+  <div class="mark">&ldquo;</div>
+  <blockquote>{{ site.pullquote.text }}</blockquote>
+  <cite>{{ site.pullquote.cite }}</cite>
+</section>
+
+<!-- Humidor -->
+<section class="fl-section">
+  <div class="fl-humidor-intro">
+    <div class="fl-kicker">{{ site.humidor_section.kicker }}</div>
+    <h2>{{ site.humidor_section.title_html }}</h2>
+    <p>{{ site.humidor_section.body }}</p>
+  </div>
+
+  <div class="fl-humidor">
+    {% for review in humidor limit: 4 %}
+      {% include shelf-card.html review=review %}
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="fl-newsletter">
+  <div>
+    <div class="fl-kicker">{{ site.newsletter.kicker }}</div>
+    <h2>{{ site.newsletter.title_html }}</h2>
+  </div>
+  <div>
+    <p>{{ site.newsletter.body }}</p>
+    <form class="fl-news-form" data-newsletter data-endpoint="{{ site.newsletter.endpoint }}">
+      <input type="email" name="email" placeholder="{{ site.newsletter.placeholder }}" required>
+      <button type="submit">{{ site.newsletter.submit_label }}</button>
+    </form>
+    <div class="fl-news-fine">{{ site.newsletter.fine }}</div>
+  </div>
+</section>

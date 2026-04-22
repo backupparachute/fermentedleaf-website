@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<article class="fl-section">
+  <div class="fl-section-head" style="align-items: flex-start;">
+    <div>
+      <div class="fl-kicker">Review · {{ page.origin }}</div>
+      <h2>{{ page.title }}</h2>
+    </div>
+    <div class="fl-side">
+      <div class="fl-score" style="justify-content: flex-end;">
+        <span class="fl-score-num">{{ page.score }}</span>
+        <span class="fl-score-den">/100</span>
+      </div>
+      <div class="fl-score-lbl" style="margin-top: 8px;">Strength</div>
+      <div class="fl-dots">
+        {% for i in (1..5) %}
+          {% if i <= page.strength %}<span class="on"></span>{% else %}<span></span>{% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% if page.cover %}
+    <div class="fl-img-ph" style="aspect-ratio: 3/2; margin-bottom: 40px;">
+      <img src="{{ page.cover | relative_url }}" alt="{{ page.title | escape }}">
+    </div>
+  {% endif %}
+
+  <div style="max-width: 68ch; font-family: var(--fl-font-sub); font-size: 19px; line-height: 1.65; color: var(--fl-fg-soft);">
+    {{ content }}
+  </div>
+</article>

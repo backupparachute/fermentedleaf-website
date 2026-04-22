@@ -1,0 +1,28 @@
+---
+layout: default
+title: "The Journal"
+description: "Essays, origin stories, and the slow craft of fermentation."
+permalink: /journal/
+---
+
+<section class="fl-section" style="border-bottom: 0;">
+  <div class="fl-humidor-intro">
+    <div class="fl-kicker">The Journal</div>
+    <h2>Essays, origin stories, and the <em>slow craft</em> of fermentation.</h2>
+    <p>Long-form reading. Published when it's ready, not when it's scheduled.</p>
+  </div>
+
+  {%- assign articles = site.journal | sort: "date" | reverse -%}
+  <div class="fl-journal-list" style="max-width: 960px; margin: 0 auto;">
+    {% for article in articles %}
+      <a href="{{ article.url | relative_url }}" class="fl-journal-item">
+        <div class="num">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</div>
+        <div>
+          <h4>{{ article.title }}</h4>
+          <div class="mm">{{ article.kicker }} · {{ article.read_time }} min read · {{ article.date | date: "%b %-d, %Y" }}</div>
+        </div>
+        <div class="arr">→</div>
+      </a>
+    {% endfor %}
+  </div>
+</section>

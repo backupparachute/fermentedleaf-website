@@ -1,0 +1,113 @@
+title: Fermented Leaf
+tagline: The Cigar Journal
+description: >-
+  An independent cigar journal — long-form reviews, origin stories,
+  and a carefully-kept humidor for the considered smoker.
+url: "https://fermentedleaf.com"
+
+# Theming defaults applied to .fl-site on every page
+theme_defaults:
+  theme: dark        # dark | light
+  palette: library   # library | club | minimal
+  accent: heavy      # balanced | heavy
+
+collections:
+  reviews:
+    output: true
+    permalink: /humidor/:path/
+  journal:
+    output: true
+    permalink: /journal/:path/
+  guides:
+    output: true
+    permalink: /guides/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: reviews
+    values:
+      layout: review
+  - scope:
+      path: ""
+      type: journal
+    values:
+      layout: journal
+  - scope:
+      path: ""
+      type: guides
+    values:
+      layout: guide
+
+# Editorial chrome
+announce:
+  left: "Volume I · Issue 04 — <em>The Winter Humidor</em>"
+  right: ""
+
+hero:
+  eyebrow: "Est. MMXXVI · A Cigar Journal"
+  title_html: 'The <em>considered</em> smoke,<br>catalogued.'
+  tagline: "A quiet room for the considered smoke."
+  tagline_cont: "Long-form reviews, origin stories, and a curated shelf of cigars worth the hour."
+  primary_cta:
+    label: "Browse the Humidor"
+    url: "/humidor/"
+  ghost_cta:
+    label: "Read the Journal"
+    url: "/journal/"
+  stats:
+    - num: "412"
+      label: "Cigars Reviewed"
+    - num: "37"
+      label: "Origin Stories"
+    - num: "18,240"
+      label: "Readers Subscribed"
+
+reviews_section:
+  kicker: "Recent Reviews"
+  title_html: 'Notes from the <em>humidor</em>, one cigar at a time.'
+  side: "Every cigar is rested a minimum of thirty days, smoked twice, and reviewed in the company of good water and better silence."
+
+journal_section:
+  kicker: "The Journal"
+  title_html: 'Essays, origin stories, and the <em>slow craft</em> of fermentation.'
+
+pullquote:
+  text: "To smoke well is to accept that time is the first ingredient."
+  cite: "— From the letter to readers, Issue 01"
+
+humidor_section:
+  kicker: "The Humidor"
+  title_html: 'A small, <em>opinionated</em> shelf.'
+  body: >-
+    Every cigar here has been rested, smoked, and written up.
+    Click through for the full tasting notes.
+
+newsletter:
+  kicker: "The Dispatch"
+  title_html: 'A monthly letter from the <em>ashtray</em>.'
+  body: "One review, one essay, one cigar worth tracking down — delivered on the first Sunday of each month. No noise, no nonsense, unsubscribe whenever."
+  placeholder: "your address, please"
+  submit_label: "Subscribe →"
+  fine: "Monthly · Never shared · Written by hand"
+  # Subscribe endpoint. Point this at a small backend (Cloudflare Worker,
+  # Vercel Function, AWS Lambda, etc.) that holds the Resend API key and
+  # POSTs {email} to https://api.resend.com/audiences/{AUDIENCE_ID}/contacts.
+  # Leave blank until the backend is deployed — the form will gracefully
+  # show "Not wired up yet".
+  endpoint: ""
+
+footer_blurb: "An independent cigar journal. Reviews, origin stories, and a carefully-kept humidor for the considered smoker."
+copyright: "© MMXXVI Fermented Leaf · An independent publication"
+disclaimer: "Readers must be of legal smoking age · Smoke responsibly"
+
+sass:
+  style: compressed
+
+exclude:
+  - README.md
+  - reference/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/

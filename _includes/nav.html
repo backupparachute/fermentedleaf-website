@@ -1,0 +1,21 @@
+<nav class="fl-nav">
+  <div class="fl-nav-links">
+    {% for link in site.data.navigation.left %}
+      <a href="{{ link.url | relative_url }}">{{ link.label }}</a>
+    {% endfor %}
+  </div>
+
+  <a href="{{ '/' | relative_url }}" class="fl-logo-block">
+    <div class="fl-logo-wordmark">Fermented <em>Leaf</em></div>
+  </a>
+
+  <div class="fl-nav-links fl-nav-right">
+    {% for link in site.data.navigation.right %}
+      <a href="{{ link.url | relative_url }}"{% if link.accent %} class="fl-sub-link"{% endif %}>{{ link.label }}</a>
+    {% endfor %}
+    <button class="fl-theme-toggle" id="fl-theme-toggle" aria-label="Toggle theme">
+      <svg id="fl-theme-icon" viewBox="0 0 24 24"></svg>
+      <span id="fl-theme-label">Light</span>
+    </button>
+  </div>
+</nav>

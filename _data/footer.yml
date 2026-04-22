@@ -1,0 +1,19 @@
+columns:
+  - heading: Reading
+    links:
+      - { label: "The Humidor", url: "/humidor/" }
+      - { label: "The Journal", url: "/journal/" }
+      - { label: "Pairings", url: "/journal/pairings/" }
+      - { label: "Guides", url: "/guides/" }
+  - heading: The Humidor
+    links:
+      - { label: "Recent reviews", url: "/humidor/" }
+      - { label: "By origin", url: "/humidor/origin/" }
+      - { label: "By strength", url: "/humidor/strength/" }
+      - { label: "Highest scored", url: "/humidor/top/" }
+  - heading: Quiet corners
+    links:
+      - { label: "About", url: "/about/" }
+      - { label: "Methodology", url: "/methodology/" }
+      - { label: "Referral disclosure", url: "/disclosure/" }
+      - { label: "Contact", url: "/contact/" }

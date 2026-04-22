@@ -1,0 +1,25 @@
+<footer class="fl-footer">
+  <div>
+    <div class="fl-footer-brand">Fermented <em>Leaf</em></div>
+    <p class="fl-footer-blurb">{{ site.footer_blurb }}</p>
+  </div>
+  {% for col in site.data.footer.columns %}
+  <div>
+    <h5>{{ col.heading }}</h5>
+    <ul>
+      {% for link in col.links %}
+      <li><a href="{{ link.url | relative_url }}">{{ link.label }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</footer>
+
+<div class="fl-footer-bottom">
+  <div>{{ site.copyright }}</div>
+  <div>{{ site.disclaimer }}</div>
+</div>
+
+<div class="fl-footer-credit">
+  Made by <a href="https://backupparachute.com" target="_blank" rel="noopener">Backup Parachute Software</a>
+</div>

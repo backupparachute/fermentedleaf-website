@@ -1,0 +1,21 @@
+---
+layout: default
+title: "The Humidor"
+description: "Every cigar we've rested, smoked, and written up."
+permalink: /humidor/
+---
+
+<section class="fl-section" style="border-bottom: 0;">
+  <div class="fl-humidor-intro">
+    <div class="fl-kicker">The Humidor</div>
+    <h2>Every cigar we've <em>written up</em>.</h2>
+    <p>Each one rested a minimum of thirty days, smoked twice, and reviewed in the company of good water and better silence.</p>
+  </div>
+
+  <div class="fl-humidor">
+    {% assign reviews = site.reviews | sort: "date" | reverse %}
+    {% for review in reviews %}
+      {% include shelf-card.html review=review %}
+    {% endfor %}
+  </div>
+</section>

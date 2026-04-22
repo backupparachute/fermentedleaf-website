@@ -1,0 +1,17 @@
+---
+layout: default
+title: "Subscribe"
+permalink: /subscribe/
+---
+
+<section class="fl-section" style="border-bottom: 0;">
+  <div class="fl-humidor-intro">
+    <div class="fl-kicker">{{ site.newsletter.kicker }}</div>
+    <h2>{{ site.newsletter.title_html }}</h2>
+    <p>{{ site.newsletter.body }}</p>
+  </div>
+
+  <div style="max-width: 560px; margin: 0 auto;">
+    {% include newsletter-form.html %}
+  </div>
+</section>

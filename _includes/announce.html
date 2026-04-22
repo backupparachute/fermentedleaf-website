@@ -1,0 +1,8 @@
+<div class="fl-announce">
+  <div class="fl-announce-inner"{% unless site.announce.right and site.announce.right != "" %} style="justify-content: center;"{% endunless %}>
+    <span>{{ site.announce.left }}</span>
+    {% if site.announce.right and site.announce.right != "" %}
+      <span>{{ site.announce.right }}</span>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,28 @@
+---
+layout: default
+title: "Guides"
+description: "Primers, how-tos, and travel notes for the considered smoker."
+permalink: /guides/
+---
+
+<section class="fl-section" style="border-bottom: 0;">
+  <div class="fl-humidor-intro">
+    <div class="fl-kicker">Guides</div>
+    <h2>Primers, how-tos, and the <em>long answers</em>.</h2>
+    <p>Reference reading for anyone starting out, traveling, or simply trying to keep their humidor honest.</p>
+  </div>
+
+  {%- assign guides = site.guides | sort: "order" -%}
+  <div class="fl-journal-list" style="max-width: 960px; margin: 0 auto;">
+    {% for guide in guides %}
+      <a href="{{ guide.url | relative_url }}" class="fl-journal-item">
+        <div class="num">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</div>
+        <div>
+          <h4>{{ guide.title }}</h4>
+          <div class="mm">{{ guide.kicker }} · {{ guide.read_time }} min read</div>
+        </div>
+        <div class="arr">→</div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
